@@ -1,6 +1,20 @@
+import  { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 
 const Contact = () => {
+        const form = useRef();
+      
+        const sendEmail = (e) => {
+          e.preventDefault();
+      
+          emailjs.sendForm('service_2cw01jr', 'template_2l9ttgg', form.current, 'NBbBQzvPcI7HNgioo')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+        };
     return (
         <div >
 
@@ -14,26 +28,29 @@ const Contact = () => {
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mr-8">
 
                         <div className="card-body">
+
+                        <form ref={form} onSubmit={sendEmail}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Your Name</span>
                                 </label>
-                                <input type="text" placeholder="name" className="input input-bordered" />
+                                <input type="text" placeholder="name" className="input input-bordered" name='from_name' />
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" placeholder="email" className="input input-bordered" />
+                                <input type="text" placeholder="email" className="input input-bordered" name='from_email'/>
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Message</span>
                                 </label>
-                                <input type="text" placeholder="message" className="input input-bordered" />
+                                <input type="text" placeholder="message" className="input input-bordered" name='message' />
                                 
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn bg-gray-700 hover:bg-gray-800 text-white">Send</button>
                             </div>
+                        </form>
                         </div>
                     </div>
                 </div>
