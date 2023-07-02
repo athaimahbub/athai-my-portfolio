@@ -4,6 +4,7 @@ const Navbar = () => {
     const navOptions = <>
         <li><Link to='/' className="font-semibold text-white">Home</Link></li>
         <li><Link to='/about' className="font-semibold text-white">About</Link></li>
+        <li><Link to='/skills' className="font-semibold text-white">Skills</Link></li>
         <li><Link to='/projects' className="font-semibold text-white">Projects</Link></li>
         <li><Link to='/contact' className="font-semibold text-white">Contact</Link></li>
     </>
